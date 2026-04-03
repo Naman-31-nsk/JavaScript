@@ -1,0 +1,29 @@
+
+let name = "Udea Solution LLP";
+let age = 6;
+let city = "Haryana ";
+
+
+console.log("Name:", name);
+console.log("Age:", age);
+console.log("City:", city);
+
+
+let myName = "Lucky";
+console.log("String:", myName);
+
+
+let myAge = 20;
+console.log("Number:", myAge);
+
+
+let isStudent = true;
+console.log("Boolean:", isStudent);
+
+
+let emptyValue = null;
+console.log("Null:", emptyValue);
+
+
+let notAssigned;
+console.log("Undefined:", notAssigned);
