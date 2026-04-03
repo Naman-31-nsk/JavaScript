@@ -1,0 +1,30 @@
+
+let a = 12;
+let b = 4;
+
+
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+const multiply = (a, b) => a * b;
+
+const divide = (a, b) => {
+    if (b === 0) {
+        return "Cannot divide by zero";
+    }
+    return a / b;
+};
+
+
+console.log("Numbers:", a, b);
+
+console.log("Addition (Normal):", add(a, b));
+console.log("Subtraction (Normal):", subtract(a, b));
+
+console.log("Multiplication (Arrow):", multiply(a, b));
+console.log("Division (Arrow):", divide(a, b));
