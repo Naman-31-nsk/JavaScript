@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+
+  <div class="bg-white p-6 rounded-xl shadow-lg w-96">
+    <h1 class="text-2xl font-bold mb-4 text-center">To-Do App</h1>
+
+    <div class="flex gap-2 mb-4">
+      <input id="taskInput" type="text" placeholder="Enter task..."
+        class="flex-1 border p-2 rounded" />
+      <button id="addBtn"
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Add
+      </button>
+    </div>
+
+    <ul id="taskList" class="space-y-2"></ul>
+  </div>
+
+  <script>
+    let taskInput = document.getElementById("taskInput");
+    let addBtn = document.getElementById("addBtn");
+    let taskList = document.getElementById("taskList");
+
+    // load tasks from localStorage
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    function renderTasks() {
+      taskList.innerHTML = "";
+
+      tasks.forEach((task, index) => {
+        let li = document.createElement("li");
+        li.className = "bg-gray-200 p-2 rounded flex justify-between";
+
+        li.innerHTML = `
+          <span>${task}</span>
+          <button onclick="deleteTask(${index})" class="text-red-500">X</button>
+        `;
+
+        taskList.appendChild(li);
+      });
+    }
+
+    addBtn.addEventListener("click", function () {
+      let text = taskInput.value.trim();
+      if (text === "") return;
+
+      tasks.push(text);
+
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+
+      taskInput.value = "";
+      renderTasks();
+    });
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      renderTasks();
+    }
+
+    renderTasks();
+  </script>
+
+</body>
+</html>
